@@ -1,0 +1,174 @@
+/*aqui zera as margens das caixas que foram criadas (margin e padding)
+o box-sizing: border-box limita que a caixa criada seja do tamanho pré-fixado. Se algum lugar, item dentro da caixa for adicionado borda, ele terá de ser dimencionado dentro do tamanho da caixa. Sem isso o código vai aumentar a caixa */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+   --card-bg-color: #1d1c19;
+   --bg: url(./assets/bg-yellow.svg);
+
+}
+
+body.blue {
+  --card-title-border-color: #338AF3;
+  --card-color-primary: #338AF3;
+  --card-bg-color: #202024;
+  --bg: url(./assets/bg-blue.svg);
+}
+
+body.green {
+  --card-title-border-color: #047c3f;
+  --card-color-primary: #047c3f;
+  --card-bg-color: #1a1f1b;
+  --bg: url(./assets/bg-green.svg);
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  /* background-color: #121214;
+  background-image: var(--bg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+  background: #121214 var(--bg) no-repeat top center/cover;
+
+}
+
+body *{ /*aqui define a fonte de todo o projeto*/
+  font-family: 'Roboto', sans-serif;/*sans-serif = sem tracinho*/
+}
+
+/*fit content ajusta o conteúdo ao tamanho da tela,
+o margin aqui esta definindo que o conteudo vai começar 52 abaixo da borda, e vai se centralizar automaticamente ao meio*/
+#app {
+  width: fit-content;
+  margin: 52px auto;
+  padding-top: 52px;
+}
+
+header {
+  margin-bottom: 63px;
+  text-align: center;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  padding: 32px 23px;
+  text-align: center;
+
+  background: var(--card-bg-color);
+  border-bottom: 2px solid var(--card-color-primary); /*faz a linha amarela no fim da caixa*/
+  border-radius: 6px;
+}
+
+.card h2{ /*retangulo da data*/
+  display: flex;/*destrava a justificação do texto, pode mandar pra qualquer lado agora*/
+  gap: 16px; /*distancia de 16px do numero e do dia*/
+  justify-content: center; /*alinha o conteudo ao centro*/
+  align-items: center; /*alinha os itens horizontalmente*/
+  
+  padding: 8px 16px;/*8 é a margem de cima e baixo e 16 as laterais*/
+  border: 1px solid var(--card-title-border-color); /*borda de 1 pixel de expessura e cor*/
+  border-radius: 6px; /*arredondamento das bordas em 6 pixels*/
+
+  width: fit-content;/*define que a margem (caixa) se ajuste a seu conteudo*/
+  margin-inline: auto;/*define que a caixa sempre ficara centralizada na linha horizontal*/
+  margin-bottom: 53px; /*define a distancia da data para o proximo elemento*/
+
+  color: #F7DD43;
+}
+
+.card h2 span{
+  color: #E1E1E6;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.card h2:hover,
+.card h2:hover {
+  transform: scale(1.1);
+}
+
+.card h2:hover,
+.card h2:hover {
+  transition: transform 0.3s;
+}
+
+.card ul{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 270px;
+  
+}
+
+.card ul li{  /*bandeiras e escrita central*/
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.card ul li + li{
+  padding-top: 24px;
+  border-top: 1px solid #323238;
+
+}
+
+.card ul li strong{ /*config a escrita central (cor e font-size)*/
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 125%;
+
+  color: #E1E1E6;
+}
+
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.1);
+}
+
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.3s;
+}
+
+.card{
+  opacity: 0;
+  animation: appear .2s forwards;
+}
+
+
+@keyframes appear {
+  0%{
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@media( min-width: 700px){
+  #cards{
+    max-width: 670px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
